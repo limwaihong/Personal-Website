@@ -1,0 +1,127 @@
+body, html {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: #333;
+    height: 100%;
+    font-size: 13px;
+    line-height: 1.5;
+}
+.container {
+    display: flex;
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.left-column {
+    flex: 0 0 40%;
+    max-width: 400px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+.right-column {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    margin-left: calc(40% + 2rem);
+    box-sizing: border-box;
+}
+h1, h2, h3 {
+    font-weight: 300;
+    margin-bottom: 0.25rem;
+    font-size: 13px;
+}
+h2 {
+    margin-top: 0;
+    color: #888;
+}
+.project {
+    margin-bottom: 2rem;
+}
+.project-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 1rem;
+}
+
+.text-btn {
+    display: block;
+    padding: 0;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: left;
+}
+
+.text-btn:hover {
+    text-decoration: underline;
+}
+#clock {
+    font-family: 'Roboto Mono', monospace;
+    margin-top: 1rem;
+}
+.footnote {
+    position: absolute;
+    bottom: 1rem;
+    left: 2rem;
+    font-size: 11px;
+}
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.toast.show {
+    opacity: 1;
+}
+
+.bio, .buttons, #clock {
+    margin-bottom: 32px;
+}
+
+
+@media (max-width: 1200px) {
+    .container {
+        flex-direction: column;
+    }
+    .left-column {
+        position: static;
+        width: 100%;
+        max-width: none;
+        height: auto;
+    }
+    .right-column {
+        margin-left: 0;
+        width: 100%;
+    }
+
+}
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1600px;
+    }
+    .left-column {
+        max-width: 500px;
+    }
+}
