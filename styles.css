@@ -9,6 +9,14 @@ body, html {
     font-size: 13px;
     line-height: 1.5;
 }
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #FABA01;
+    margin-top: 1rem; /* Adds some space between the circle and the h1 */
+    margin-bottom: 0.5rem;
+}
 .container {
     display: flex;
     min-height: 100vh;
@@ -26,6 +34,7 @@ body, html {
     height: 100%;
     box-sizing: border-box;
     overflow-y: auto;
+    align-items: flex-start;
 }
 .right-column {
     flex: 1;
@@ -91,11 +100,51 @@ h2 {
     opacity: 1;
 }
 
-.bio, .buttons, #clock {
+.bio, .buttons {
     margin-bottom: 28px;
 }
 
+/* Hide the default cursor */
+* {
+    cursor: none !important;
+}
 
+/* Custom cursor styles */
+.custom-cursor {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #000000;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: background-color 0.3s ease;
+}
+
+.custom-cursor.hover {
+    background: linear-gradient(45deg, #ff2041, #ffdd01);
+    background-size: 200% 200%;
+    animation: gradientAnimation 0.3s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Improve clickable area for text buttons */
+.text-btn {
+    display: block; /* Change from block to inline-block */
+    padding: 4px 0px; /* Add horizontal padding */
+    margin: 0px ; /* Add vertical margin */
+}
 
 
 @media (max-width: 1200px) {

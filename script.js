@@ -20,5 +20,23 @@ function updateClock() {
     document.getElementById('clock').textContent = timeString + ' GMT+8';
 }
 
+// Custom cursor functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const cursor = document.createElement('div');
+    cursor.classList.add('custom-cursor');
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    const hoverElements = document.querySelectorAll('a, button, .project-image, .text-btn');
+    hoverElements.forEach(element => {
+        element.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+});
+
 updateClock();
 setInterval(updateClock, 1000);
