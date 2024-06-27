@@ -55,7 +55,7 @@ h2 {
 
 .text-btn {
     display: block;
-    padding: 0;
+    padding: 2px 0;
     color: #333;
     text-decoration: none;
     cursor: pointer;
@@ -74,12 +74,7 @@ h2 {
     font-family: 'Roboto Mono', monospace;
     margin-top: 1rem;
 }
-.footnote {
-    position: absolute;
-    bottom: 1rem;
-    left: 2rem;
-    font-size: 11px;
-}
+
 .toast {
     position: fixed;
     bottom: 20px;
@@ -97,7 +92,7 @@ h2 {
 }
 
 .bio, .buttons, #clock {
-    margin-bottom: 32px;
+    margin-bottom: 28px;
 }
 
 
