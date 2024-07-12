@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
     font-family: 'Inter', sans-serif;
     font-weight: 300;
     margin: 0;
@@ -9,20 +10,24 @@ body, html {
     font-size: 13px;
     line-height: 1.5;
 }
+
 .circle {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #FABA01;
-    margin-top: 1rem; /* Adds some space between the circle and the h1 */
+    margin-top: 1rem;
+    /* Adds some space between the circle and the h1 */
     margin-bottom: 0.5rem;
 }
+
 .container {
     display: flex;
     min-height: 100vh;
     max-width: 1400px;
     margin: 0 auto;
 }
+
 .left-column {
     flex: 0 0 40%;
     max-width: 400px;
@@ -36,6 +41,7 @@ body, html {
     overflow-y: auto;
     align-items: flex-start;
 }
+
 .right-column {
     flex: 1;
     padding: 2rem;
@@ -43,18 +49,24 @@ body, html {
     margin-left: calc(40% + 2rem);
     box-sizing: border-box;
 }
-h1, h2, h3 {
+
+h1,
+h2,
+h3 {
     font-weight: 300;
     margin-bottom: 0.25rem;
     font-size: 13px;
 }
+
 h2 {
     margin-top: 0;
     color: #888;
 }
+
 .project {
     margin-bottom: 2rem;
 }
+
 .project-image {
     max-width: 100%;
     height: auto;
@@ -79,6 +91,7 @@ h2 {
 .text-btn:hover {
     text-decoration: underline;
 }
+
 #clock {
     font-family: 'Roboto Mono', monospace;
     margin-top: 1rem;
@@ -96,11 +109,13 @@ h2 {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
+
 .toast.show {
     opacity: 1;
 }
 
-.bio, .buttons {
+.bio,
+.buttons {
     margin-bottom: 28px;
 }
 
@@ -131,9 +146,11 @@ h2 {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -141,9 +158,12 @@ h2 {
 
 /* Improve clickable area for text buttons */
 .text-btn {
-    display: block; /* Change from block to inline-block */
-    padding: 4px 0px; /* Add horizontal padding */
-    margin: 0px ; /* Add vertical margin */
+    display: block;
+    /* Change from block to inline-block */
+    padding: 4px 0px;
+    /* Add horizontal padding */
+    margin: 0px;
+    /* Add vertical margin */
 }
 
 
@@ -151,23 +171,83 @@ h2 {
     .container {
         flex-direction: column;
     }
+
     .left-column {
         position: static;
         width: 100%;
         max-width: none;
         height: auto;
     }
+
     .right-column {
         margin-left: 0;
         width: 100%;
     }
 
 }
+
 @media (min-width: 1400px) {
     .container {
         max-width: 1600px;
     }
+
     .left-column {
         max-width: 500px;
+    }
+}
+
+/* Resume page specific styles */
+.resume-page {
+    flex-direction: column;
+    padding: 2rem;
+    max-width: 100%;
+    align-items: flex-start;  /* Change to left alignment */
+}
+
+.resume-header {
+    text-align: left;  /* Change to left alignment */
+    margin-bottom: 2rem;
+}
+
+.resume-header .circle {
+    margin: 0 0 1rem 0;  /* Adjust margin for left alignment */
+}
+
+.resume-header h1,
+.resume-header h2 {
+    margin: 0.5rem 0;
+}
+
+.resume-content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Style for iframe */
+.resume-content iframe {
+    width: 100%;
+    height: 126vh;
+    border: none;
+}
+
+/* Adjust container for resume page */
+.container.resume-page {
+    max-width: 100%;
+    margin: 0;
+    padding: 2rem;
+}
+
+/* ... (rest of the styles remain the same) ... */
+
+@media (max-width: 1200px) {
+    /* ... (existing media query styles) ... */
+
+    .resume-page {
+        padding: 1rem;
+    }
+
+    .resume-content iframe {
+        height: 70vh;  /* Adjust height for smaller screens */
     }
 }
