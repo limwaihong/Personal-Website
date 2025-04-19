@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>waihong garage sale</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+        .item-card {
+            width: calc(33.333% - 16px);
+            aspect-ratio: 1/1;
+            margin: 8px;
+            background: #F4F4F6;
+            border-radius: 8px;
+            position: relative;
+        }
+        .img-spacer {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .item-info {
+            position: absolute;
+            bottom: 16px;
+            left: 24px;
+            text-align: left;
+        }
+        .brand-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #9CA3AF;
+            margin-bottom: 2px;
+        }
+        .item-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+        .price-container {
+            position: absolute;
+            bottom: 16px;
+            right: 24px;
+            text-align: right;
+        }
+        .item-price {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: #000000;
+        }
+        .original-price {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #9CA3AF;
+            text-decoration: line-through;
+            margin-bottom: 2px;
+        }
+        @media (max-width: 768px) {
+            .item-card {
+                width: calc(100% - 16px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen">
+    <div class="w-full px-4 py-8">
+        <!-- Title Section -->
+        <header class="text-left pl-3 pt-8 md:pt-6">
+            <h1 class="text-7xl md:text-6xl lg:text-7xl font-bold text-black mb-6 font-playfair">wai hong <br class="block md:hidden"> garage sale</h1>
+            <p class="text-gray-500 font-inter mb-4 text-sm max-w-2xl">As I close this chapter in Shenzhen and prepare for my return to Malaysia, I'm looking to pass these cherished items on to you, my friends. These quality pieces have served me well during my time here, and I hope they'll find new homes with people I care about. Each item comes with memories, and I'd be happy knowing they continue to be useful in your hands.</p>
+        </header>
+
+        <!-- Items Display Section -->
+        <div class="cards-container">
+            <!-- Item 1 -->
+            <div class="item-card">
+                <div class="w-full h-full flex items-center justify-center">
+                    <img src="assets/item_airpurifier.png" alt="Item description" class="img-spacer rounded-lg">
+                </div>
+                <div class="item-info">
+                    <div class="brand-name">小米⋅2022</div>
+                    <div class="item-name">空气净化器4lite</div>
+                </div>
+                <div class="price-container">
+                    <div class="original-price">¥599</div>
+                    <div class="item-price">¥280</div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="item-card">
+                <div class="w-full h-full flex items-center justify-center">
+                    <img src="assets/item_heater.png" alt="Item description" class="img-spacer rounded-lg">
+                </div>
+                <div class="item-info">
+                    <div class="brand-name">小米⋅2022</div>
+                    <div class="item-name">电暖器取暖器/3档功率</div>
+                </div>
+                <div class="price-container">
+                    <div class="original-price">¥299</div>
+                    <div class="item-price">¥100</div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="item-card">
+                <div class="w-full h-full flex items-center justify-center">
+                    <span class="text-gray-500">Item Image</span>
+                </div>
+                <div class="item-info">
+                    <div class="brand-name">Brand Name</div>
+                    <div class="item-name">Item Name</div>
+                </div>
+                <div class="price-container">
+                    <div class="original-price">$XX</div>
+                    <div class="item-price">$XX</div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="item-card">
+                <div class="w-full h-full flex items-center justify-center">
+                    <span class="text-gray-500">Item Image</span>
+                </div>
+                <div class="item-info">
+                    <div class="brand-name">Brand Name</div>
+                    <div class="item-name">Item Name</div>
+                </div>
+                <div class="price-container">
+                    <div class="original-price">$XX</div>
+                    <div class="item-price">$XX</div>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="item-card">
+                <div class="w-full h-full flex items-center justify-center">
+                    <span class="text-gray-500">Item Image</span>
+                </div>
+                <div class="item-info">
+                    <div class="brand-name">Brand Name</div>
+                    <div class="item-name">Item Name</div>
+                </div>
+                <div class="price-container">
+                    <div class="original-price">$XX</div>
+                    <div class="item-price">$XX</div>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="item-card">
+                <div class="w-full h-full flex items-center justify-center">
+                    <span class="text-gray-500">Item Image</span>
+                </div>
+                <div class="item-info">
+                    <div class="brand-name">Brand Name</div>
+                    <div class="item-name">Item Name</div>
+                </div>
+                <div class="price-container">
+                    <div class="original-price">$XX</div>
+                    <div class="item-price">$XX</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
