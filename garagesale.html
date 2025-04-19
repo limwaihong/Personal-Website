@@ -81,6 +81,14 @@
                 align-items: flex-start; /* Align to top instead of center on mobile */
                 padding-top: 10px; /* Add some padding at the top */
             }
+            
+            /* Limit item name width on small screens */
+            .item-name {
+                max-width: 180px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
     </style>
 </head>
