@@ -34,6 +34,35 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
+// Random H1 title text rotation
+function setRandomTitle() {
+  const titleTexts = [
+    "(WORK IN PROGRESS)",
+    "(How's your day?)",
+    "(HELLO! GOODBYE!)",
+    "(What's for dinner?)"
+  ];
+  
+  // Get random index
+  const randomIndex = Math.floor(Math.random() * titleTexts.length);
+  
+  // Update the H1 text
+  const h1Element = document.querySelector('h1');
+  if (h1Element) {
+    h1Element.textContent = titleTexts[randomIndex];
+    
+    // Redraw tape overlay after text change with a small delay to ensure text is rendered
+    setTimeout(() => {
+      if (window.redrawTape) {
+        window.redrawTape();
+      }
+    }, 50);
+  }
+}
+
+// Set random title when page loads
+document.addEventListener('DOMContentLoaded', setRandomTitle);
+
 // PNG sequence animation
 function startPngSequence() {
   const sequenceImage = document.getElementById('lumber-sequence');
@@ -72,33 +101,80 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Set canvas size
   function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    tapeCanvas.width = window.innerWidth;
-    tapeCanvas.height = window.innerHeight;
-    drawTape();
+    // Use document dimensions to avoid mobile viewport issues
+    const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    const height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    
+    canvas.width = width;
+    canvas.height = height;
+    tapeCanvas.width = width;
+    tapeCanvas.height = height;
+    
+    // Use requestAnimationFrame to ensure proper rendering timing
+    requestAnimationFrame(() => {
+      drawTape();
+    });
   }
   
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
+  
+  // Handle mobile orientation changes
+  window.addEventListener('orientationchange', function() {
+    setTimeout(() => {
+      resizeCanvas();
+    }, 300); // Delay to allow orientation change to complete
+  });
 
-  // Draw the tape overlay over "WORK IN PROGRESS"
+  // Draw the tape overlay over the H1 text
   function drawTape() {
+    // Clear the entire tape canvas first
+    tapeCtx.clearRect(0, 0, tapeCanvas.width, tapeCanvas.height);
+    
     const titleElement = document.querySelector('h1');
     if (titleElement) {
       const rect = titleElement.getBoundingClientRect();
+      
+      // Get scroll position to account for any scrolling
+      const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Calculate tape dimensions with mobile-friendly padding
+      const isMobile = window.innerWidth <= 768;
+      const padding = isMobile ? 15 : 20;
+      const extraHeight = isMobile ? 8 : 10;
+      
+      // Ensure tape doesn't go outside screen bounds
+      const tapeLeft = Math.max(0, rect.left + scrollX - padding);
+      const tapeTop = Math.max(0, rect.top + scrollY - 5);
+      const tapeWidth = Math.min(rect.width + (padding * 2), tapeCanvas.width - tapeLeft);
+      const tapeHeight = rect.height + extraHeight;
+      
       tapeCtx.fillStyle = '#ffcc00';
-      tapeCtx.fillRect(rect.left - 20, rect.top - 5, rect.width + 40, rect.height + 10);
+      tapeCtx.fillRect(tapeLeft, tapeTop, tapeWidth, tapeHeight);
     }
   }
+  
+  // Expose drawTape function globally so it can be called when text changes
+  window.redrawTape = drawTape;
 
   // Check if coordinates are over the tape area
   function isOverTape(x, y) {
     const titleElement = document.querySelector('h1');
     if (titleElement) {
       const rect = titleElement.getBoundingClientRect();
-      return x >= rect.left - 20 && x <= rect.right + 20 && 
-             y >= rect.top - 5 && y <= rect.bottom + 5;
+      const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      
+      const isMobile = window.innerWidth <= 768;
+      const padding = isMobile ? 15 : 20;
+      
+      // Convert canvas coordinates to page coordinates
+      const pageX = x - scrollX;
+      const pageY = y - scrollY;
+      
+      return pageX >= rect.left - padding && pageX <= rect.right + padding && 
+             pageY >= rect.top - 5 && pageY <= rect.bottom + 5;
     }
     return false;
   }
