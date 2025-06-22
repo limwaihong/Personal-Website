@@ -11,21 +11,17 @@
     <link rel="icon" href="assets/WaiHong_favicon.png" type="image/png">
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-001PKMJ3VJ"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-001PKMJ3VJ');
-</script>
-
 <body>
     <div class="container">
         <div class="main-content">
-            <h1>(WORK IN PROGRESS)</h1>
-            <p class="bio">Hello. I am a Malaysian designer currently working to start my own design studio, however you can still reach out via email below. Previously designed human-centered digital experiences at <a href="https://nothing.tech/" target="_blank">Nothing</a> and <a href="https://www.oneplus.com/" target="_blank">OnePlus</a>.</p>
+            <div class="gif-container">
+                <img src="assets/lumber/000.png" alt="Lumber animation" id="lumber-sequence">
+            </div>
+            <div class="title-container">
+                <h1>(WORK IN PROGRESS)</h1>
+                <div class="tape-overlay"></div>
+            </div>
+            <p class="bio">Hello. I am a Malaysian designer currently working to start my own design studio, you can reach out via email below. Previously designed human-centered digital experiences at <a href="https://nothing.tech/" target="_blank">Nothing</a> and <a href="https://www.oneplus.com/" target="_blank">OnePlus</a>.</p>
             <div class="buttons">
                 <button class="text-btn" onclick="copyEmail()">Email</button>
                 <a href="https://x.com/waaihong" class="text-btn">X</a>
@@ -35,6 +31,8 @@
         </div>
     </div>
     <div class="toast" id="toast">Email copied to clipboard!</div>
+    <canvas id="paintCanvas"></canvas>
+    <canvas id="tapeCanvas"></canvas>
     <script src="script.js"></script>
 </body>
 

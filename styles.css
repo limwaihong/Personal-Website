@@ -9,6 +9,11 @@ html {
     height: 100%;
     font-size: 13px;
     line-height: 1.5;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: url('assets/Paint_cursor.png') 5 0, auto;
 }
 
 .container {
@@ -24,6 +29,26 @@ html {
     text-align: center;
     max-width: 600px;
     width: 100%;
+}
+
+.gif-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 0rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lumber-sequence {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.title-container {
+    position: relative;
+    display: inline-block;
 }
 
 h1 {
@@ -52,7 +77,7 @@ h2 {
 }
 
 .buttons {
-    margin-bottom: 28px;
+    margin-bottom: 16px;
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -102,14 +127,36 @@ h2 {
     opacity: 1;
 }
 
+#paintCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+#tapeCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+}
+
 @media (max-width: 768px) {
     .container {
-        padding: 1rem;
+        padding: 2rem 1.5rem;
+    }
+    
+    .main-content {
+        padding: 0 1rem;
     }
     
     .buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+        gap: 30px;
     }
 }
