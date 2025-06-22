@@ -37,10 +37,12 @@ setInterval(updateClock, 1000);
 // Random H1 title text rotation
 function setRandomTitle() {
   const titleTexts = [
-    "(WORK IN PROGRESS)",
-    "(How's your day?)",
-    "(HELLO! GOODBYE!)",
-    "(What's for dinner?)"
+    "(WORK IN PROGRESS...)",
+    "(HOW'S YOUR DAY GOING?)",
+    "(HELLO, WASSUP?)",
+    "(WHAT'S FOR DINNER?)",
+    "(ICE CREAM OR CAKE)",
+    "(COFFEE OR MILK TEA)",
   ];
   
   // Get random index
@@ -273,13 +275,28 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('touchstart', function(e) {
     e.preventDefault();
     startPainting(e);
-  });
+  }, { passive: false });
+  
   document.addEventListener('touchend', function(e) {
     e.preventDefault();
     stopPainting();
-  });
+  }, { passive: false });
+  
   document.addEventListener('touchmove', function(e) {
     e.preventDefault();
     paint(e);
-  });
+  }, { passive: false });
+
+  // Additional protection against pull-to-refresh
+  document.addEventListener('touchstart', function(e) {
+    // Prevent pull-to-refresh when touching near the top of the screen
+    if (e.touches[0].clientY < 100) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  document.addEventListener('touchmove', function(e) {
+    // Prevent pull-to-refresh during any touch move
+    e.preventDefault();
+  }, { passive: false });
 });

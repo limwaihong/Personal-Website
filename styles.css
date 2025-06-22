@@ -15,6 +15,10 @@ html {
     -ms-user-select: none;
     cursor: url('assets/Paint_cursor.png') 5 0, auto;
     overflow-x: hidden;
+    /* Disable pull-to-refresh on mobile browsers */
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
 }
 
 .container {
@@ -153,6 +157,10 @@ h2 {
         overflow-x: hidden;
         position: fixed;
         width: 100%;
+        /* Additional mobile-specific pull-to-refresh prevention */
+        overscroll-behavior: none;
+        overscroll-behavior-y: none;
+        touch-action: pan-x pan-y;
     }
     
     .container {
