@@ -267,36 +267,47 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Mouse events
-  document.addEventListener('mousedown', startPainting);
+  document.addEventListener('mousedown', function(e) {
+    // Only start painting if not clicking on a button or link
+    if (!isClickableElement(e.target)) {
+      startPainting(e);
+    }
+  });
   document.addEventListener('mouseup', stopPainting);
   document.addEventListener('mousemove', paint);
 
   // Touch events for mobile
   document.addEventListener('touchstart', function(e) {
-    e.preventDefault();
-    startPainting(e);
+    // Only prevent default if not touching a button or link
+    if (!isClickableElement(e.target)) {
+      e.preventDefault();
+      startPainting(e);
+    }
   }, { passive: false });
   
   document.addEventListener('touchend', function(e) {
-    e.preventDefault();
-    stopPainting();
+    // Only prevent default if not touching a button or link
+    if (!isClickableElement(e.target)) {
+      e.preventDefault();
+      stopPainting();
+    }
   }, { passive: false });
   
   document.addEventListener('touchmove', function(e) {
-    e.preventDefault();
-    paint(e);
-  }, { passive: false });
-
-  // Additional protection against pull-to-refresh
-  document.addEventListener('touchstart', function(e) {
-    // Prevent pull-to-refresh when touching near the top of the screen
-    if (e.touches[0].clientY < 100) {
+    // Only prevent default if currently painting and not over clickable elements
+    if (painting && !isClickableElement(e.target)) {
       e.preventDefault();
+      paint(e);
     }
   }, { passive: false });
 
-  document.addEventListener('touchmove', function(e) {
-    // Prevent pull-to-refresh during any touch move
-    e.preventDefault();
-  }, { passive: false });
+  // Helper function to check if element is clickable
+  function isClickableElement(element) {
+    return element.tagName === 'BUTTON' || 
+           element.tagName === 'A' || 
+           element.classList.contains('text-btn') ||
+           element.closest('.text-btn') ||
+           element.closest('button') ||
+           element.closest('a');
+  }
 });
