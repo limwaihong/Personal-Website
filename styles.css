@@ -9,10 +9,6 @@ html {
     height: 100%;
     font-size: 13px;
     line-height: 1.5;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
 }
 
 .container {
@@ -20,7 +16,7 @@ html {
     justify-content: flex-start;
     align-items: flex-start;
     min-height: 100vh;
-    padding: 2rem;
+    padding: 3rem;
     box-sizing: border-box;
 }
 
@@ -36,36 +32,14 @@ html {
 }
 
 h1 {
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
     margin-bottom: 0.5rem;
+    margin-top: 1rem;
     font-size: 1.5rem;
 }
 
-.last-update {
-    font-size: 0.9rem;
-    color: #888;
-    margin-bottom: 2rem;
-    margin-top: 0;
-}
 
-h2 {
-    font-weight: 300;
-    margin-top: 0;
-    margin-bottom: 0.25rem;
-    font-size: 13px;
-    color: #888;
-}
-
-.bio {
-    margin-bottom: 28px;
-    text-align: left;
-}
-
-.bio a,
-.bio a:visited {
-    color: #333;
-    text-decoration: none;
-}
 
 .buttons {
     margin-bottom: 16px;
@@ -110,12 +84,17 @@ h2 {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #333;
+    background-color: #141414;
     color: white;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 12px 24px;
+    border-radius: 8px;
     opacity: 0;
     transition: opacity 0.3s ease;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 400;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
 }
 
 .toast.show {
