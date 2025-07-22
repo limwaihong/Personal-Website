@@ -156,7 +156,8 @@ h2 {
     .bio {
         font-size: 12px;
         margin-bottom: 20px;
-        padding: 0 0.5rem;
+        padding: 0;
+        color: #333;
     }
     
     .buttons {
@@ -169,6 +170,7 @@ h2 {
         white-space: normal;
         overflow: visible;
         text-overflow: initial;
+        color: #333;
     }
     
     #clock {
